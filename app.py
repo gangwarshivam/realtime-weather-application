@@ -1,3 +1,4 @@
+"""Module providing streamlit to create webapp"""
 import streamlit as st
 from weather import get_weather
 
@@ -18,7 +19,6 @@ if st.button("Get Weather"):
     else:
         with st.spinner("Fetching live weather data..."):
             data = get_weather(city)
-        
         if not data:
             st.error("Hmm… couldn’t find that city 🌍")
         else:
@@ -30,7 +30,6 @@ if st.button("Get Weather"):
                 st.metric("🌡 Temperature (°C)", data["main"]["temp"])
                 st.metric("🤔 Feels Like (°C)", data["main"]["feels_like"])
                 st.metric("💧 Humidity (%)", data["main"]["humidity"])
-            
             with col2:
                 st.metric("🌬 Wind Speed (m/s)", data["wind"]["speed"])
                 st.metric(
